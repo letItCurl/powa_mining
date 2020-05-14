@@ -21,7 +21,6 @@ RSpec.describe PowaMining do
                [0, 0,-4, 2,  3],
                [0, 0, 0, 6,  7],
                [0, 0, 0, 0,  1],]
-        @pw_one.build_map
         expect(@pw_one.map).to eq(map)
       end
     end
