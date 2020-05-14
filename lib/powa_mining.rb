@@ -41,12 +41,30 @@ class PowaMining
         @map[i][j] = @data[j] - @data[i-1]
       end
     end
+
+  end
+  
+  def buy? 
+  end
+
+  def max_profit_k1 
+      p = []
+      @map.each do |l|
+        p << l.max
+      end
+      p.shift
+      @profit = p.max
   end
 
   def big_money
-    @profit
+    if @k > 1
+
+    else
+      max_profit_k1
+    end
   end
 
 end
 # BASIC TEST
-# pm = PowaMining.new(k: 5, data: [1,7,3,9,10])
+pm = PowaMining.new(k: 1, data: [1,7,3,9,10])
+pm.buy?

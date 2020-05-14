@@ -12,7 +12,12 @@ RSpec.describe PowaMining do
   describe "#big_money" do
     before do
       @context_one = {k: 2, data: [1,7,3,9,10]}
+      @context_two = {k: 1, data: @context_one[:data]}
+      @context_three = {k: 1, data: [10,1,7,14]}
+      
       @pw_one = PowaMining.new(k: @context_one[:k], data: @context_one[:data])
+      @pw_two = PowaMining.new(k: @context_two[:k], data: @context_two[:data])   
+      @pw_three = PowaMining.new(k: @context_three[:k], data: @context_three[:data]) 
     end
     describe "#build_map" do
       it "should build the map correctly (context_one)" do
@@ -24,7 +29,16 @@ RSpec.describe PowaMining do
         expect(@pw_one.map).to eq(map)
       end
     end
-    xit "should return the maximum profit with @context_one"do 
+    describe "case: k = 1" do
+      it 'should return the maximum difference of the map of context 2 (k=1)' do
+        expect(@pw_two.big_money).to eq(9)
+      end
+
+      it 'should return the maximum difference of the map of context 3 (k=1)' do
+        expect(@pw_three.big_money).to eq(13)
+      end
+    end
+    xit "should return the maximum profit with context 1"do 
       expect(@pw_one.big_money).to eq(13)
     end
   end
