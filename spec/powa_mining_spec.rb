@@ -45,11 +45,11 @@ RSpec.describe PowaMining do
     
     describe "case: k = 1" do
     
-      it 'should return the maximum difference of the map of context 2 (k=1)' do
+      it 'should return the maximum difference of the map of context 2' do
         expect(@pw_two.big_money).to eq(9)
       end
 
-      it 'should return the maximum difference of the map of context 3 (k=1)' do
+      it 'should return the maximum difference of the map of context 3' do
         expect(@pw_three.big_money).to eq(13)
       end
     
