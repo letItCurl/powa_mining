@@ -72,12 +72,12 @@ class PowaMining
 
   def big_money
     for i in (1..@k) do
-      max_profit
+      max_profit unless @forbiden_range.length == @data.length
     end
   end
 
 end
 # BASIC TEST
-pm = PowaMining.new(k: 3, data: [7,13,5,11,1,5,3,9,6,10])
-#pm = PowaMining.new(k: 1, data: [1,7,3,9,10])
-pm.big_money
+#pm = PowaMining.new(k: 4, data: [7,13,5,11,1,5,3,9,6,10])
+#pm = PowaMining.new(k: 2, data: [1,7,3,9,10])
+#pm.big_money
