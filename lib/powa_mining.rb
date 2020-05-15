@@ -46,9 +46,9 @@ class PowaMining
 
   end
 
-  def show_map
-    puts "### MAP ###"
-    @map.each_with_index do |ele, ind|
+  def show_matrix(map)
+    puts "### MATRIX ###"
+    map.each_with_index do |ele, ind|
       puts "line #{ind}: #{ele}"
     end
     puts "### END ###"
@@ -57,10 +57,12 @@ class PowaMining
   def max_profit_k1 
       p = []
       @map.each_with_index do |line, index|
-        p << line.max
+        p << [index, line.each_with_index.max[1] ,line.max]
       end
       p.shift
       @profit = p.max
+
+      show_matrix p
   end
 
   def big_money
@@ -74,4 +76,7 @@ class PowaMining
 end
 # BASIC TEST
 pm = PowaMining.new(k: 1, data: [7,13,5,11,1,5,3,9,6,10])
-pm.show_map
+pm.max_profit_k1
+
+
+
