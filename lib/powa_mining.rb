@@ -1,7 +1,8 @@
 class PowaMining
   
-  attr_accessor :k, :data, :map
-  
+  attr_accessor :k, :data
+  attr_reader :map, :profit 
+
   def initialize(k:, data:)
     @k = k
     @data = data
@@ -53,33 +54,30 @@ class PowaMining
         index = line.each_with_index.max[1]  
         p << [index, line.max] unless @forbiden_range.include? index
     end
-    
-      
-    show_matrix p
+     
+    #show_matrix p
 
     a = p.map{ |x| x[1]}
     a = p[a.each_with_index.max[1]].unshift(a.each_with_index.max[1])  
     
-    pretty_print a
-    
-    puts "forbiden range"
+    #pretty_print a
+    @profit += a[2]
+
+    #puts "forbiden range"
     @forbiden_range += ((a[0]..a[1]).to_a)
-    pretty_print @forbiden_range
+    #pretty_print @forbiden_range
+      
+    #puts @profit
   end
 
   def big_money
-    if @k > 1
-    
-    else
-      max_profit[2]
+    for i in (1..@k) do
+      max_profit
     end
   end
 
 end
 # BASIC TEST
-pm = PowaMining.new(k: 1, data: [7,13,5,11,1,5,3,9,6,10])
-pm.max_profit
-pm.max_profit
-pm.max_profit
-pm.max_profit
-
+pm = PowaMining.new(k: 3, data: [7,13,5,11,1,5,3,9,6,10])
+#pm = PowaMining.new(k: 1, data: [1,7,3,9,10])
+pm.big_money

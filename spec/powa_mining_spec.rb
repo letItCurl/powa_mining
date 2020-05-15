@@ -38,43 +38,51 @@ RSpec.describe PowaMining do
     
       describe "case: k = 1" do
         it 'should return the maximum difference of the map of context 2' do
-          expect(@pw_two.big_money).to eq(9)
+          @pw_two.big_money
+          expect(@pw_two.profit).to eq(9)
         end
 
         it 'should return the maximum difference of the map of context 3' do
-          expect(@pw_three.big_money).to eq(13)
+          @pw_three.big_money
+          expect(@pw_three.profit).to eq(13)
         end
       end
     
       describe "context 1" do
         it "should return the maximum profit"do 
-          expect(@pw_one.big_money).to eq(13)
+          @pw_one.big_money
+          expect(@pw_one.profit).to eq(13)
         end
       end
     
       describe "context 4" do  
         it "should return the maximum profit with k 1"do 
-          expect(@pw_four.big_money).to eq(9)
+          @pw_four.big_money
+          expect(@pw_four.profit).to eq(9)
         end 
       
         it "should return the maximum profit with k 2"do 
           @pw_four.k = 2
-          expect(@pw_four.big_money).to eq(15)
+          @pw_four.big_money
+          expect(@pw_four.profit).to eq(15)
         end
 
         it "should return the maximum profit with k 3"do 
           @pw_four.k = 3
-          expect(@pw_four.big_money).to eq(21)
+          @pw_four.big_money
+          expect(@pw_four.profit).to eq(21)
         end
 
         it "should return the maximum profit with k 4"do 
           @pw_four.k = 4
-          expect(@pw_four.big_money).to eq(24)
+          @pw_four.big_money
+          expect(@pw_four.profit).to eq(24)
         end
 
         it "should return the maximum profit with k 5"do 
           @pw_four.k = 5
-          expect(@pw_four.big_money).to eq(26)
+          @pw_four.big_money
+          expect(@pw_four.profit).to eq(26)
         end
       end
     end
