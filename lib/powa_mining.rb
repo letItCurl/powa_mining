@@ -9,7 +9,7 @@ class PowaMining
     
     @profit = 0
     @count = 0
-    @forbiden_pos = []
+    @forbiden_range = []
     
     self.build_map
   end
@@ -48,17 +48,23 @@ class PowaMining
   end
 
   def max_profit
-      p = []
-      @map.each do |line|
-        p << [line.each_with_index.max[1] ,line.max]
-      end
+    p = []
+    @map.each do |line|
+        index = line.each_with_index.max[1]  
+        p << [index, line.max] unless @forbiden_range.include? index
+    end
+    
       
-      #show_matrix p
-      
-      a = p.map{ |x| x[1]}
-      a = p[a.each_with_index.max[1]].unshift(a.each_with_index.max[1])
-      
-      #pretty_print a
+    show_matrix p
+
+    a = p.map{ |x| x[1]}
+    a = p[a.each_with_index.max[1]].unshift(a.each_with_index.max[1])  
+    
+    pretty_print a
+    
+    puts "forbiden range"
+    @forbiden_range += ((a[0]..a[1]).to_a)
+    pretty_print @forbiden_range
   end
 
   def big_money
@@ -73,6 +79,7 @@ end
 # BASIC TEST
 pm = PowaMining.new(k: 1, data: [7,13,5,11,1,5,3,9,6,10])
 pm.max_profit
-
-
+pm.max_profit
+pm.max_profit
+pm.max_profit
 
