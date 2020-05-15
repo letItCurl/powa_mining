@@ -14,10 +14,13 @@ RSpec.describe PowaMining do
       @context_one = {k: 2, data: [1,7,3,9,10]}
       @context_two = {k: 1, data: @context_one[:data]}
       @context_three = {k: 1, data: [10,1,7,14]}
+      @context_four = {k: 1, data: [7,13,5,11,1,5,3,9,6,10]} 
       
+
       @pw_one = PowaMining.new(k: @context_one[:k], data: @context_one[:data])
       @pw_two = PowaMining.new(k: @context_two[:k], data: @context_two[:data])   
       @pw_three = PowaMining.new(k: @context_three[:k], data: @context_three[:data]) 
+      @pw_four = PowaMining.new(k: @context_four[:k], data: @context_four[:data])
     end
     
     describe "#build_map" do
@@ -44,7 +47,6 @@ RSpec.describe PowaMining do
     end
     
     describe "case: k = 1" do
-    
       it 'should return the maximum difference of the map of context 2' do
         expect(@pw_two.big_money).to eq(9)
       end
@@ -52,12 +54,38 @@ RSpec.describe PowaMining do
       it 'should return the maximum difference of the map of context 3' do
         expect(@pw_three.big_money).to eq(13)
       end
-    
     end
     
-    xit "should return the maximum profit with context 1"do 
-      expect(@pw_one.big_money).to eq(13)
+    describe "context 1" do
+      it "should return the maximum profit with context 1"do 
+        expect(@pw_one.big_money).to eq(13)
+      end
     end
-  
+    
+    describe "context 4" do  
+      it "should return the maximum profit with k 1"do 
+        expect(@pw_one.big_money).to eq(9)
+      end 
+      
+      it "should return the maximum profit with k 2"do 
+        @pw_one.k = 2
+        expect(@pw_one.big_money).to eq(15)
+      end
+
+      it "should return the maximum profit with k 3"do 
+        @pw_one.k = 3
+        expect(@pw_one.big_money).to eq(21)
+      end
+
+      it "should return the maximum profit with k 4"do 
+        @pw_one.k = 4
+        expect(@pw_one.big_money).to eq(24)
+      end
+
+      it "should return the maximum profit with k 5"do 
+        @pw_one.k = 5
+        expect(@pw_one.big_money).to eq(26)
+      end
+    end
   end
 end

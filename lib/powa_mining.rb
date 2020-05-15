@@ -1,6 +1,6 @@
 class PowaMining
   
-  attr_reader :k, :data, :map
+  attr_accessor :k, :data, :map
   
   def initialize(k:, data:)
     @k = k
@@ -66,5 +66,11 @@ class PowaMining
 
 end
 # BASIC TEST
-pm = PowaMining.new(k: 1, data: [1,7,3,9,10])
-pm.buy?
+#pm = PowaMining.new(k: 1, data: [7,13,5,11,1,5,3,9,6,10])
+#pm.map.each_with_index do |ele, ind|
+#  puts "line #{ind}: #{ele}"
+#end
+
+#p = pm.big_money
+
+#puts p
