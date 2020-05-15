@@ -57,34 +57,34 @@ RSpec.describe PowaMining do
     end
     
     describe "context 1" do
-      it "should return the maximum profit with context 1"do 
+      it "should return the maximum profit"do 
         expect(@pw_one.big_money).to eq(13)
       end
     end
     
     describe "context 4" do  
       it "should return the maximum profit with k 1"do 
-        expect(@pw_one.big_money).to eq(9)
+        expect(@pw_four.big_money).to eq(9)
       end 
       
       it "should return the maximum profit with k 2"do 
-        @pw_one.k = 2
-        expect(@pw_one.big_money).to eq(15)
+        @pw_four.k = 2
+        expect(@pw_four.big_money).to eq(15)
       end
 
       it "should return the maximum profit with k 3"do 
-        @pw_one.k = 3
-        expect(@pw_one.big_money).to eq(21)
+        @pw_four.k = 3
+        expect(@pw_four.big_money).to eq(21)
       end
 
       it "should return the maximum profit with k 4"do 
-        @pw_one.k = 4
-        expect(@pw_one.big_money).to eq(24)
+        @pw_four.k = 4
+        expect(@pw_four.big_money).to eq(24)
       end
 
       it "should return the maximum profit with k 5"do 
-        @pw_one.k = 5
-        expect(@pw_one.big_money).to eq(26)
+        @pw_four.k = 5
+        expect(@pw_four.big_money).to eq(26)
       end
     end
   end

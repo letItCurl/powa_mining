@@ -6,9 +6,11 @@ class PowaMining
     @k = k
     @data = data
     @map = Array.new(data.length) {Array.new(data.length){0}}
+    
     @profit = 0
     @count = 0
-
+    @forbiden_pos = []
+    
     self.build_map
   end
 
@@ -43,14 +45,19 @@ class PowaMining
     end
 
   end
-  
-  def buy? 
+
+  def show_map
+    puts "### MAP ###"
+    @map.each_with_index do |ele, ind|
+      puts "line #{ind}: #{ele}"
+    end
+    puts "### END ###"
   end
 
   def max_profit_k1 
       p = []
-      @map.each do |l|
-        p << l.max
+      @map.each_with_index do |line, index|
+        p << line.max
       end
       p.shift
       @profit = p.max
@@ -58,7 +65,7 @@ class PowaMining
 
   def big_money
     if @k > 1
-
+    
     else
       max_profit_k1
     end
@@ -66,11 +73,5 @@ class PowaMining
 
 end
 # BASIC TEST
-#pm = PowaMining.new(k: 1, data: [7,13,5,11,1,5,3,9,6,10])
-#pm.map.each_with_index do |ele, ind|
-#  puts "line #{ind}: #{ele}"
-#end
-
-#p = pm.big_money
-
-#puts p
+pm = PowaMining.new(k: 1, data: [7,13,5,11,1,5,3,9,6,10])
+pm.show_map
