@@ -1,7 +1,7 @@
 class PowaMining
   
   attr_accessor :k, :data
-  attr_reader :map, :profit 
+  attr_reader :map, :profit, :deals, :last_profit 
 
   def initialize(k:, data:)
     @k = k
@@ -11,7 +11,9 @@ class PowaMining
     @profit = 0
     @count = 0
     @forbiden_range = []
-    
+    @deals = []
+    @last_profit = 0
+
     self.build_map
   end
 
@@ -54,15 +56,13 @@ class PowaMining
         index = line.each_with_index.max[1]  
         p << [index, line.max] unless @forbiden_range.include? index
     end
-     
-    #show_matrix p
 
     a = p.map{ |x| x[1]}
     a = p[a.each_with_index.max[1]].unshift(a.each_with_index.max[1])  
     
     #pretty_print a
     @profit += a[2]
-
+    @deals << a
     #puts "forbiden range"
     @forbiden_range += ((a[0]..a[1]).to_a)
     #pretty_print @forbiden_range
@@ -71,13 +71,44 @@ class PowaMining
   end
 
   def big_money
-    for i in (1..@k) do
-      max_profit unless @forbiden_range.length == @data.length
+    i = 1
+    while i <= @k do
+      unless @forbiden_range.length == @data.length
+        max_profit
+      end
+
+      if i < @k && @forbiden_range.length == @data.length
+        #puts "PIVOT CHANGING"
+        @map[@deals[0][0]][@deals[0][1]] = 0
+        #show_matrix @map
+        @last_profit = @profit
+        @profit = 0
+        @deals = []
+        @forbiden_range = []
+        i = 1
+      end
+      
+      if @last_profit > @profit
+        #puts "PIVOT CHANGING"
+        @map[@deals[0][0]][@deals[0][1]] = 0
+        #show_matrix @map
+        @last_profit = 0
+        @profit = 0
+        @deals = []
+        @forbiden_range = []
+        i = 1
+      end
+
+      i += 1
+      #puts"--#{i}--"
     end
   end
 
 end
 # BASIC TEST
-#pm = PowaMining.new(k: 4, data: [7,13,5,11,1,5,3,9,6,10])
-#pm = PowaMining.new(k: 2, data: [1,7,3,9,10])
-#pm.big_money
+#pm = PowaMining.new(k: 5, data: [7,13,5,11,1,5,3,9,6,10])
+pm = PowaMining.new(k: 2, data: [1,7,3,9,10])
+pm.big_money
+puts pm.profit
+puts pm.last_profit
+puts pm.show_matrix pm.deals
