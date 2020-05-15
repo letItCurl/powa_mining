@@ -28,22 +28,15 @@ class PowaMining
     end
     @count += 1
   end
-
-  def get_inputs
-    {k: @k, data: @data}
-  end
   
   def build_map
-    @map[0] = @data
-
     i_vector = (1..@data.length-1)
-  
     for i in i_vector do
       for j in (i..@data.length-1) do
         @map[i][j] = @data[j] - @data[i-1]
       end
     end
-
+    @map.shift
   end
 
   def show_matrix(map)
@@ -54,29 +47,32 @@ class PowaMining
     puts "### END ###"
   end
 
-  def max_profit_k1 
+  def max_profit
       p = []
-      @map.each_with_index do |line, index|
-        p << [index, line.each_with_index.max[1] ,line.max]
+      @map.each do |line|
+        p << [line.each_with_index.max[1] ,line.max]
       end
-      p.shift
-      @profit = p.max
-
-      show_matrix p
+      
+      #show_matrix p
+      
+      a = p.map{ |x| x[1]}
+      a = p[a.each_with_index.max[1]].unshift(a.each_with_index.max[1])
+      
+      #pretty_print a
   end
 
   def big_money
     if @k > 1
     
     else
-      max_profit_k1
+      max_profit[2]
     end
   end
 
 end
 # BASIC TEST
 pm = PowaMining.new(k: 1, data: [7,13,5,11,1,5,3,9,6,10])
-pm.max_profit_k1
+pm.max_profit
 
 
 
