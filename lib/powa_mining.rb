@@ -107,8 +107,8 @@ class PowaMining
 end
 # BASIC TEST
 #pm = PowaMining.new(k: 5, data: [7,13,5,11,1,5,3,9,6,10])
-pm = PowaMining.new(k: 2, data: [1,7,3,9,10])
-pm.big_money
-puts pm.profit
-puts pm.last_profit
-puts pm.show_matrix pm.deals
+#pm = PowaMining.new(k: 2, data: [1,7,3,9,10])
+#pm.big_money
+#puts pm.profit
+#puts pm.last_profit
+#puts pm.show_matrix pm.deals
