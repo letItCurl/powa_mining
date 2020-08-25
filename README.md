@@ -13,7 +13,7 @@
     <td>
       <div style="margin-left: 30px;">
         <p>Hey there !</br>
-        I'm letItCurl, fullstack developer engineer in freelance a.k.a Roland in real life :p</br>
+        I'm letItCurl, fullstack developer engineer in freelance.</br>
         If you have any question you can <a href="https://www.linkedin.com/in/roland-lopez-developer/?locale=en_US">contact me</a> if you wish !</p>
         <p>I'm always ready to help !</p>
         <a href="mailto:rolandlopez.developer@gmail.com?subject=H3y!4r3ù4va1la8le?">Email me</a>
